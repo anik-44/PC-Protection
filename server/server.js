@@ -5,7 +5,16 @@ const analyticsRouter = require("./route/analytics.route");
 
 const app = express();
 
-app.use(cors());
+const allowedOrigins = [
+    "http://localhost:5173",
+    "https://pcprotection.netlify.app"
+];
+
+app.use(cors({
+    origin: allowedOrigins,
+    methods: ["GET"],
+}));
+
 app.use(express.json());
 
 // create metrics table
